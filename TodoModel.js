@@ -24,6 +24,22 @@ export class TodoModel {
     return this.#todos.map(t => ({ ...t }));
   } // copie défensive
 
+  filtrer(nom) {
+    if (!['toutes', 'faites', 'a-faire'].includes(nom)) {
+      throw new Error(`Filtre inconnu : ${nom}`);
+    }
+    const todos = nom === 'faites'
+      ? this.#todos.filter(todo => todo.done)
+      : nom === 'a-faire'
+        ? this.#todos.filter(todo => !todo.done)
+        : this.#todos;
+    return todos.map(todo => ({ ...todo }));
+  }
+
+  restantes() {
+    return this.#todos.filter(todo => !todo.done).length;
+  }
+
   subscribe(fn) {
     this.#listeners.push(fn);
     fn(this.all());

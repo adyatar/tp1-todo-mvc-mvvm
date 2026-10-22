@@ -17,6 +17,16 @@
       .error {
         color: #c8483f;
       }
+      .filters {
+        display: flex;
+        gap: 8px;
+        margin: 16px 0;
+      }
+      .filters .actif {
+        background: #245b4a;
+        border-color: #245b4a;
+        color: white;
+      }
       li {
         margin: 6px 0;
       }
@@ -28,6 +38,11 @@
       <form>
         <input placeholder="Nouvelle tâche" autofocus /> <button>Ajouter</button>
       </form>
+      <nav class="filters" aria-label="Filtres des tâches">
+        <button type="button" data-filtre="toutes" aria-pressed="false">Toutes</button>
+        <button type="button" data-filtre="faites" aria-pressed="false">Faites</button>
+        <button type="button" data-filtre="a-faire" aria-pressed="false">À faire</button>
+      </nav>
       <p class="error"></p>
       <ul></ul>
       <p class="counter"></p>
