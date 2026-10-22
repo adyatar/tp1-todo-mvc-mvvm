@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>TP1 - Todo-list MVC</title>
+    <title>TP1 - Todo-list MVVM</title>
     <style>
       body {
         font-family: system-ui, sans-serif;
@@ -33,7 +33,7 @@
     </style>
   </head>
   <body>
-    <h1>Todo-list (MVC)</h1>
+    <h1>Todo-list (MVVM)</h1>
     <div id="app">
       <form>
         <input placeholder="Nouvelle tâche" autofocus /> <button>Ajouter</button>
@@ -50,8 +50,9 @@
     <script type="module">
       import { TodoModel } from './TodoModel.js';
       import { TodoView } from './TodoView.js';
-      import { TodoController } from './TodoController.js';
-      new TodoController(new TodoModel(), new TodoView(document.getElementById('app')));
+      import { TodoViewModel } from './TodoViewModel.js';
+      const viewModel = new TodoViewModel(new TodoModel());
+      new TodoView(document.getElementById('app')).bind(viewModel);
     </script>
   </body>
 </html>
